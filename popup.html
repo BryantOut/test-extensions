@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>百度扩展功能</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 1rem;
+            width: 380px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #ffffff;
+            color: #333;
+        }
+
+        .title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #2563eb;
+            margin-bottom: 1rem;
+        }
+
+        .card {
+            background: #f9fafb;
+            border-radius: 12px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature:last-child {
+            margin-bottom: 0;
+        }
+
+        .feature span {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.95rem;
+        }
+
+        .feature svg {
+            width: 18px;
+            height: 18px;
+            stroke: #4b5563;
+        }
+
+        .button {
+            padding: 4px 10px;
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: background-color 0.2s ease;
+        }
+
+        .button:hover {
+            background-color: #1e40af;
+        }
+
+        .warning {
+            text-align: center;
+            color: #dc2626;
+            margin-top: 40px;
+        }
+
+        .warning svg {
+            width: 36px;
+            height: 36px;
+            margin-bottom: 0.5rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .not-supported {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .not-supported-box {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-radius: 12px;
+            padding: 20px;
+            width: 100%;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            color: #b91c1c;
+            box-sizing: border-box;
+        }
+
+        .warning-icon {
+            width: 40px;
+            height: 40px;
+            stroke: #dc2626;
+            margin-bottom: 10px;
+        }
+
+        .not-supported-title {
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        .not-supported-text {
+            font-size: 0.9rem;
+            color: #b91c1c;
+            margin-bottom: 12px;
+        }
+
+        .red-button {
+            background-color: #dc2626;
+        }
+
+        .red-button:hover {
+            background-color: #b91c1c;
+        }
+
+        .cancelBtn {
+            width: 100%;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 百度页面显示 -->
+    <div id="feature-list">
+        <div class="title">🎯 可用功能</div>
+
+        <div class="card">
+            <div class="feature">
+                <span>
+                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M21 21l-4.35-4.35A7.5 7.5 0 1011 18.5a7.5 7.5 0 005.65-2.85z" />
+                    </svg>
+                    1分钟查询一次
+                </span>
+                <button class="button" id="sampleMinute" data-seconds="1">执行</button>
+            </div>
+
+            <div class="feature">
+                <span>
+                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M21 21l-4.35-4.35A7.5 7.5 0 1011 18.5a7.5 7.5 0 005.65-2.85z" />
+                    </svg>
+                    2分钟查询一次
+                </span>
+                <button class="button" id="min15" data-seconds="2">执行</button>
+            </div>
+        </div>
+
+        <button class="button cancelBtn" id="cancelAlarm">取消定时器</button>
+    </div>
+
+    <!-- 非百度页面显示 -->
+    <div id="not-supported" class="not-supported">
+        <div class="not-supported-box">
+            <svg xmlns="http://www.w3.org/2000/svg" class="warning-icon" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 9v2m0 4h.01M5.07 19h13.86c1.05 0 1.63-1.14 1.06-2.05L13.06 4.95a1.25 1.25 0 00-2.12 0L3.91 16.95c-.57.91.01 2.05 1.06 2.05z" />
+            </svg>
+            <p class="not-supported-title">当前页面不支持该扩展</p>
+            <p class="not-supported-text">请点击按钮跳转至百度主页以启用功能。</p>
+            <button id="go-to-baidu" class="button red-button">前往百度</button>
+        </div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+
+</html>
