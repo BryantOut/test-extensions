@@ -3,11 +3,19 @@
   "description": "Demonstrates usage and features of the event page by reminding user to drink water",
   "version": "1.0",
   "manifest_version": 3,
-  "permissions": ["tabs", "alarms", "notifications", "storage","scripting"],
+  "permissions": [
+    "tabs",
+    "alarms",
+    "notifications",
+    "storage",
+    "scripting"
+  ],
   "background": {
     "service_worker": "background.js"
   },
-  "host_permissions": ["*://www.baidu.com/*"],
+  "host_permissions": [
+    "*://www.baidu.com/*"
+  ],
   "action": {
     "default_title": "Drink Water Event",
     "default_popup": "popup.html"

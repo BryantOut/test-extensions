@@ -49,3 +49,7 @@ function refreshTabAndExtract() {
     });
   });
 }
+
+chrome.alarms.onAlarm.addListener((alarm) => {
+  refreshTabAndExtract();
+});

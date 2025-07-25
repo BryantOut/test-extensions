@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!isBaidu && goBtn) {
       goBtn.addEventListener('click', () => {
-        chrome.tabs.update(tabs[0].id, { url: 'https://www.baidu.com' });
+        chrome.tabs.create({ url: 'https://www.baidu.com' });
         window.close();
       });
     }
@@ -31,19 +31,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 'use strict';
 
-function setAlarm(event) {
-  const seconds = parseInt(event.currentTarget.getAttribute('data-seconds'), 10);
-
-  if (isNaN(seconds)) {
-    alert('无效的秒数');
-    return;
-  }
-
-  // const delayInMinutes = seconds / 60;
+function setAlarm() {
 
   chrome.action.setBadgeText({ text: 'ON' });
-  chrome.alarms.create({ delayInMinutes: seconds, periodInMinutes: seconds });
-  chrome.storage.sync.set({ seconds: seconds });
+  chrome.alarms.create({ when: Date.now(), periodInMinutes: 0.5 });
+  chrome.storage.sync.set({ minute: 0.5 });
 
   window.close();
 }
@@ -54,8 +46,5 @@ function clearAlarm() {
   window.close();
 }
 
-// An Alarm delay of less than the minimum 1 minute will fire
-// in approximately 1 minute increments if released
 document.getElementById('sampleMinute').addEventListener('click', setAlarm);
-document.getElementById('min15').addEventListener('click', setAlarm);
 document.getElementById('cancelAlarm').addEventListener('click', clearAlarm);
